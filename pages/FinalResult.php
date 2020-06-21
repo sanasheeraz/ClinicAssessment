@@ -11,6 +11,9 @@ if (!(isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['i
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
 
+    $proQuery="select * from product";
+    $proResult=mysqli_query($conn,$proQuery);
+
     $ConQuery;
     $fatquery1;
     $fatquery2;
@@ -520,177 +523,24 @@ if (!(isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['i
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                    $i=2;
+                    while( $proRow=mysqli_fetch_array($proResult))
+                    {
+                    ?>
                     <tr>
-                        <td>Can of Soda</td>
-                        <td class="money">$1.19</td>
-                        <td><?php echo $ConRow[2]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[2], 1.19); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[2], 1.19); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[2], 1.19); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[2], 1.19); ?></td>
+                        <td><?php echo $proRow['Pro_Name']?></td>
+                        <td class="money"><?php echo "$".$proRow['Pro_Price']?></td>
+                        <td><?php echo $ConRow[$i]; ?></td>
+                        <td><?php echo "$" . calculateWeekly($ConRow[$i],$proRow['Pro_Price']); ?></td>
+                        <td><?php echo "$" . calculateMonthly($ConRow[$i],$proRow['Pro_Price']); ?></td>
+                        <td><?php echo "$" . calculateAnnual($ConRow[$i],$proRow['Pro_Price']); ?></td>
+                        <td><?php echo "$" . calculateTen($ConRow[$i],$proRow['Pro_Price']); ?></td>
                     </tr>
-
-                    <tr>
-                        <td>Cup of Brewed Coffee</td>
-                        <td class="money">$2.10</td>
-                        <td><?php echo $ConRow[3]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[3], 2.10); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[3], 2.10); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[3], 2.10); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[3], 2.10); ?></td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Cup of Specialty Coffee</td>
-                        <td class="money">$4.75</td>
-                        <td><?php echo $ConRow[4]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[4], 4.75); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[4], 4.75); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[4], 4.75); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[4], 4.75); ?></td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Handful of Chips</td>
-                        <td class="money">$1.69</td>
-                        <td><?php echo $ConRow[5]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[5], 1.69); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[5], 1.69); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[5], 1.69); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[5], 1.69); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>Bar of Candy</td>
-                        <td class="money">$1.84</td>
-                        <td><?php echo $ConRow[6]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[6], 1.84); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[6], 1.84); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[6], 1.84); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[6], 1.84); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>Pack of Gum</td>
-                        <td class="money">$2.24</td>
-                        <td><?php echo $ConRow[7]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[7], 2.24); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[7], 2.24); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[7], 2.24); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[7], 2.24); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>Glass of Alcoholic Beverage</td>
-                        <td class="money">$6.95</td>
-                        <td><?php echo $ConRow[8]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[8], 6.95); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[8], 6.95); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[8], 6.95); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[8], 6.95); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>Single of Cigarettes</td>
-                        <td class="money">$0.45</td>
-                        <td><?php echo $ConRow[9]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[9], 0.45); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[9], 0.45); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[9], 0.45); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[9], 0.45); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>Can of Energy Drinks</td>
-                        <td class="money">$2.49</td>
-                        <td><?php echo $ConRow[10]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[10], 2.49); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[10], 2.49); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[10], 2.49); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[10], 2.49); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>Bar of Protein Bars</td>
-                        <td class="money">$1.99</td>
-                        <td><?php echo $ConRow[11]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[11], 1.99); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[11], 1.99); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[11], 1.99); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[11], 1.99); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>One of Bagels / Muffins / Donuts / Twinkies</td>
-                        <td class="money">$2.95</td>
-                        <td><?php echo $ConRow[12]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[12], 2.95); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[12], 2.95); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[12], 2.95); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[12], 2.95); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>Meal of Fast Food</td>
-                        <td class="money">$8.00</td>
-                        <td><?php echo $ConRow[13]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[13], 8.00); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[13], 8.00); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[13], 8.00); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[13], 8.00); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>Scoop of Ice Cream</td>
-                        <td class="money">$2.79</td>
-                        <td><?php echo $ConRow[14]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[14], 2.79); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[14], 2.79); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[14], 2.79); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[14], 2.79); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>16 Oz of Kombucha</td>
-                        <td class="money">$3.50</td>
-                        <td><?php echo $ConRow[15]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[15], 3.50); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[15], 3.50); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[15], 3.50); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[15], 3.50); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>Cup of Tea</td>
-                        <td class="money">$2.50</td>
-                        <td><?php echo $ConRow[16]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[16], 2.50); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[16], 2.50); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[16], 2.50); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[16], 2.50); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>Bottle of Other Drinks</td>
-                        <td class="money">$2.00</td>
-                        <td><?php echo $ConRow[17]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[17], 2.00); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[17], 2.00); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[17], 2.00); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[17], 2.00); ?></td>
-                    </tr>
-
-                    <tr>
-                        <td>Meal of Restaurant</td>
-                        <td class="money">$15.00</td>
-                        <td><?php echo $ConRow[18]; ?></td>
-                        <td><?php echo "$" . calculateWeekly($ConRow[18], 15.00); ?></td>
-                        <td><?php echo "$" . calculateMonthly($ConRow[18], 15.00); ?></td>
-                        <td><?php echo "$" . calculateAnnual($ConRow[18], 15.00); ?></td>
-                        <td><?php echo "$" . calculateTen($ConRow[18], 15.00); ?></td>
-                    </tr>
+                    <?php
+                    $i++;
+                    }
+                    ?>
                 </tbody>
                 <tr>
                     <th class="totals">Totals:</th>

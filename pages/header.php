@@ -55,6 +55,12 @@ $first_part=basename($_SERVER['PHP_SELF'], ".php");
                             <p>Patient</p>
                         </a>
                     </li>
+                    <li class="<?php if($first_part=='Product'||$first_part=='UpdateProduct') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                        <a class="nav-link" href="Patient.php">
+                            <i class="material-icons">person</i>
+                            <p>Product</p>
+                        </a>
+                    </li>
                 <?php 
                 }
                 else if(isset($_SESSION['Patient']))
