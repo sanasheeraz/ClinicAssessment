@@ -1,9 +1,10 @@
 <?php
 session_start();
-if(!isset($_SESSION['admin']))
+if(!((isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['id'])))
 {
-    header('location:Admin.php');
-}else{
+    header('location:login.php');
+}
+else{
     $id=$_GET['id'];
     include 'connection.php';
     $query="select * from patient where P_Id='$id'";
@@ -13,11 +14,11 @@ if(!isset($_SESSION['admin']))
     {
         if($row[3]=="Male")
         {
-        header('location:MaleSymptom.php');
+        header('location:MaleSymptom.php?id='.$id);
         }
         else if($row[3]=="Female")
         {
-        header('location:FemaleSymptom.php');
+        header('location:FemaleSymptom.php?id='.$id);
         }
     }else{
 include 'header.php';
@@ -50,6 +51,9 @@ include 'header.php';
             </tr>
             
         </table>
+        <?php 
+        $_SESSION['page_from']=$first_part;
+        ?>
         <div style="text-align:center"><a class="btn btn-primary" href="<?php echo 'UpdateProfile.php?id='.$id?>">Edit Profile</a></div>
         </div>
     </div>

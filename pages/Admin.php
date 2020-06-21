@@ -132,7 +132,7 @@ session_start();
                 $_SESSION['admin']=$name;
                 $row=mysqli_fetch_row($result);
                 $_SESSION['admin_id']=$row[0];
-                header('location:index.php');
+                header('location:Symptom.php');
             }
         } else {
             echo "<script>alert('Invalid Credentials');</script>";

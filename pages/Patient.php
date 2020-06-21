@@ -1,6 +1,10 @@
 <?php
 session_start();
 include 'header.php';
+if(!isset($_SESSION['admin']))
+{
+    header('location:Admin.php');
+}else{
 include 'connection.php';
 $query="select * from patient";
 $result=mysqli_query($conn,$query);
@@ -46,6 +50,9 @@ $result=mysqli_query($conn,$query);
                         <th>
                           Address
                         </th>
+                        <th>
+                          Action
+                        </th>
                       </thead>
                       <tbody>
                         <?php
@@ -60,6 +67,7 @@ $result=mysqli_query($conn,$query);
                           <td><?php echo $row['P_BirthDate'];?></td>
                           <td><?php echo $row['P_Contact'];?></td>
                           <td><?php echo $row['P_Address'];?></td>
+                          <td><a href="<?php echo 'UpdateProfile.php?id='.$row['P_Id'];?>">Edit</a></td>
                           </tr>
                           <?php
                         }
@@ -73,4 +81,5 @@ $result=mysqli_query($conn,$query);
       
 <?php
 include 'footer.php';
+}
 ?>

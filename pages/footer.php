@@ -38,9 +38,8 @@
   <!--  Notifications Plugin    -->
   <script src="../assets/js/plugins/bootstrap-notify.js"></script>
   
-  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
-  <script src="material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  
+  <script src="Script.js?v=2.1.2" type="text/javascript"></script>
 
 </body>
 </html>

@@ -3,7 +3,7 @@ session_start();
 include 'header.php';
 
 include 'connection.php';
-if(isset($_SESSION['Patient']))
+if((isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['id']))
 {
 $id=$_GET['id'];
 $query="Select * from Patient where P_Id ='$id'";
@@ -16,13 +16,13 @@ $row=mysqli_fetch_row($result);
         <div style="text-align:center">
             <h3><b>Male Symptom Assessment</b></h3>
         </div>
-        <form method="POST" action="MaleSubmitAssessment.php">
+        <form method="POST" action="<?php echo 'MaleSubmitAssessment.php?id='.$id?>">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label>Name : </label>
                         <?php
-                        if(!isset($_SESSION['Patient']))
+                        if(!((isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['id'])))
                         {
                         ?>
                         <input type="text" class="form-control" />
@@ -39,7 +39,7 @@ $row=mysqli_fetch_row($result);
                     <div class="form-group">
                         <label>BirthDate : </label>
                         <?php
-                        if(!isset($_SESSION['Patient']))
+                        if(!((isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['id'])))
                         {
                         ?>
                         <input type="text" class="form-control" />
@@ -56,7 +56,7 @@ $row=mysqli_fetch_row($result);
                     <div class="form-group">
                         <label>Gender : </label>
                         <?php
-                        if(!isset($_SESSION['Patient']))
+                        if(!((isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['id'])))
                         {
                         ?>
                         <input type="text" class="form-control" />
@@ -75,7 +75,7 @@ $row=mysqli_fetch_row($result);
                     <div class="form-group">
                         <label>Email : </label>
                         <?php
-                        if(!isset($_SESSION['Patient']))
+                        if(!((isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['id'])))
                         {
                         ?>
                         <input type="text" class="form-control" />
@@ -92,7 +92,7 @@ $row=mysqli_fetch_row($result);
                     <div class="form-group">
                         <label>Phone : </label>
                         <?php
-                        if(!isset($_SESSION['Patient']))
+                        if(!((isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['id'])))
                         {
                         ?>
                         <input type="text" class="form-control" />
@@ -106,14 +106,7 @@ $row=mysqli_fetch_row($result);
                     </div>
                 </div>
             </div>
-            <?php
-            if(isset($_SESSION['Patient']))
-            {
-            ?>
-            <div style="text-align:center"><a class="btn btn-primary" href="<?php echo 'UpdateProfile.php?id='.$id?>">Edit Profile</a></div>           
-            <?php
-            }
-            ?>
+            
             <h4><b>General Health Assessment (Part 1)</b></h4>
             <div style="font-size: 13px;">
                 <i>Please indicate how frequently you experience the following symptoms according to these guidelines:</i>
@@ -563,115 +556,115 @@ $row=mysqli_fetch_row($result);
                     <tbody>
                         <tr>
                             <td style="font-size: 13px;"> Poor sleep quality   </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hSleep" value="Never"/> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hSleep" value="Rearly"/> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hSleep" value="Sometimes"/> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hSleep" value="Often"/> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Memory problems  </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hMemory" value="Never"/> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hMemory" value="Rearly"/> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hMemory" value="Sometimes"/> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hMemory" value="Often"/> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Puffiness/bloating  </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hPuffiness" value="Never"/> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hPuffiness" value="Rearly"/> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hPuffiness" value="Sometimes"/> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hPuffiness" value="Often"/> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Anxiety   </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hAnxiety" value="Never"/> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hAnxiety" value="Rearly"/> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hAnxiety" value="Sometimes"/> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hAnxiety" value="Often"/> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Insomnia </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hInsomnia" value="Never"/> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hInsomnia" value="Rearly"/> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hInsomnia" value="Sometimes"/> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hInsomnia" value="Often"/> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Acne breakouts  </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hAcne" value="Never"/> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hAcne" value="Rearly"/> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hAcne" value="Sometimes"/> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hAcne" value="Often"/> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Brown age spots  </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hBrown" value="Never"/> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hBrown" value="Rearly"/> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hBrown" value="Sometimes"/> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hBrown" value="Often"/> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Inability to exercise </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hExercise" value="Never"/> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hExercise" value="Rearly"/> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hExercise" value="Sometimes"/> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hExercise" value="Often"/> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Fatty breasts </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hfatty" value ="Never"/> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hfatty" value="Rearly"/> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hfatty" value="Sometimes" /> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hfatty" value="Often" /> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Soft erections   </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hSoft" value="Never" /> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hSoft" value="Rearly" /> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hSoft" value="Sometimes" /> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hSoft" value="Often" /> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Loss of muscle  </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hMuscle" value="Never" /> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hMuscle" value="Rearly" /> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hMuscle" value="Sometimes" /> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hMuscle" value="Often" /> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Loss of stamina   </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hStamina" value="Never" /> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hStamina" value="Rearly" /> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hStamina" value="Sometimes" /> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hStamina" value="Often" /> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Headaches  </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hHeadache" value="Never" /> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hHeadache" value="Rearly" /> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hHeadache" value="Sometimes" /> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hHeadache" value="Often" /> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Enlarged prostate </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hProstate" value="Never" /> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hProstate" value="Rearly" /> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hProstate" value="Sometimes" /> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hProstate" value="Often" /> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Night time urination </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hUrination" value="Never" /> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hUrination" value="Rearly" /> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hUrination" value="Sometimes" /> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hUrination" value="Often" /> Often</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Foggy thinking  </td>
-                            <td style="font-size: 13px;"><input type="radio" /> Never</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Rearly</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Sometimes</td>
-                            <td style="font-size: 13px;"><input type="radio" /> Often</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hFoggy" value="Never" /> Never</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hFoggy" value="Rearly" /> Rearly</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hFoggy" value="Sometimes" /> Sometimes</td>
+                            <td style="font-size: 13px;"><input type="radio" name="hFoggy" value="Often" /> Often</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1004,81 +997,81 @@ $row=mysqli_fetch_row($result);
                     <tbody>
                     <tr>
                             <td style="font-size: 13px;"> Soda </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Soda"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Soda"/> Weekly</td>
                         </tr>
                         
                         <tr>
                             <td style="font-size: 13px;"> Brewed Coffee  </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Brewed"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Brewed"/> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Specialty Coffee  </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Coffee"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Coffee"/> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Chips </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Chips"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Chips"/> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Candy </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Candy"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Candy"/> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Gum </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Gum"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Gum"/> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Alcoholic Beverage </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Alcohol"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Alcohol"/> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Cigarettes  </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Cigarettes"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Cigarettes"/> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Energy Drinks  </td>
-                            <td style="font-size: 13px;"><input type="checkbox"  name="Energy"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;"  name="Energy"/> Weekly</td>
                         </tr>
                         
                         <tr>
                             <td style="font-size: 13px;"> Protein Bars </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Protein"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Protein"/> Weekly</td>
                         </tr>
                         
                         <tr>
                             <td style="font-size: 13px;"> Bagels / Muffins / Donuts / Twinkies  </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Bagels"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Bagels"/> Weekly</td>
                         </tr>
                         
                         <tr>
                             <td style="font-size: 13px;"> Fast Food  </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="FastFood"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="FastFood"/> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Ice Cream </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="IceCream"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="IceCream"/> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Kombucha  </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Kombucha" /> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Kombucha" /> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Tea </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Tea"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Tea"/> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Other Drinks </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Drinks"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Drinks"/> Weekly</td>
                         </tr>
                         <tr>
                             <td style="font-size: 13px;"> Restaurant  </td>
-                            <td style="font-size: 13px;"><input type="checkbox" name="Restaurant"/> Weekly</td>
+                            <td style="font-size: 13px;"><input type="number" value="" min="0" style="width: 40px;" name="Restaurant"/> Weekly</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <?php
-            if(isset($_SESSION['Patient']))
+            if((isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['id']))
             {
             ?>
              <div style="text-align:center"><button type="submit" name="btnSubmit" class="btn btn-primary">Submit Assessment</button></div>   

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['Patient']))
+if(!((isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['id'])))
 {
     header('location:login.php');
 }else{
@@ -13,8 +13,15 @@ if(isset($_POST['btnUpdate']))
   $name=$_POST['name'];
   $password=$_POST['password'];
   $email=$_POST['email'];
-  $gender=$_POST['gender'];
-  $address=$_POST['address'];
+  $gender;
+  if(!isset($_POST['gender']))
+  {
+    $gender="";
+  }else{
+
+    $gender=$_POST['gender'];
+  
+  }$address=$_POST['address'];
   $contact=$_POST['contact'];
   $dob=$_POST['dob'];
 
@@ -23,7 +30,18 @@ if(isset($_POST['btnUpdate']))
   $result1=mysqli_query($conn,$query1);
   if($result1)
   {
-    if(isset($_SESSION['admin']))
+    if(isset($_SESSION['admin'])&&$_SESSION['page_from']=='CheckRequiredInfo'){
+      $_SESSION['page_from']="";
+      if($gender=="Female")
+      {
+        header('location:FemaleSymptom.php');
+      }else if($gender=="Male")
+      {
+        header('location:MaleSymptom.php');
+      }else{
+        header('location:CheckRequiredInfo.php?id='.$id);
+      }
+    }else if(isset($_SESSION['admin']))
     header('location:Patient.php');
     else
     header('location:Profile.php?id='.$id);
@@ -79,11 +97,14 @@ $row=mysqli_fetch_row($result);
                           &nbsp;&nbsp;<input type="radio" name="gender" value="Male" checked> Male &nbsp; &nbsp;&nbsp;
                           <input type="radio" name="gender" value="Female"> Female</div> 
                           <?php } else if($row[3]=="Female"){?>
-                            &nbsp;&nbsp;<input type="radio" name="gender" value="Male" checked> Male &nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp;<input type="radio" name="gender" value="Male" > Male &nbsp; &nbsp;&nbsp;
                           <input type="radio" name="gender" value="Female" checked> Female</div> 
                           <?php
-                        }
-                        ?>
+                        }else{?>
+                          &nbsp;&nbsp;<input type="radio" name="gender" value="Male" > Male &nbsp; &nbsp;&nbsp;
+                        <input type="radio" name="gender" value="Female" > Female</div> 
+                        <?php
+                      }?>
                           <!-- <input type="text" class="form-control"> -->
                         </div>
                       </div>

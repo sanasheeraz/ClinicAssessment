@@ -1,3 +1,28 @@
-table {
+#resultTable{
     width: 100%;
+}
+#resultTable,#resultTable tr th ,#resultTable tr td
+{
+    border: 1px solid black;
+}
+#Range{
+    width: 100%;
+    border: 2px solid black;
+}
+#Range tr td{
+    border:1px solid black;
+    text-align: center;
+}
+#profiles
+{
+    width: 100%;
+    border: 2px solid black;
+}
+#MoneyTable
+{
+    width: 100%;
+}
+#MoneyTable td
+{
+    border: 2px solid black;
 }

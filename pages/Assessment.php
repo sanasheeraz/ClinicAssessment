@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(!isset($_SESSION['admin']))
+if(!(isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['id']))
 {
-    header('location:Admin.php');
+    header('location:login.php');
 }else{
 include 'header.php';
 include 'connection.php';
@@ -10,6 +10,19 @@ $id=$_GET['id'];
 $query="Select * from m_symptom_assessment where P_Id = '$id'";
 $result=mysqli_query($conn,$query);
 $row=mysqli_fetch_row($result);
+
+// $q="SELECT * FROM f_general_assessment_1 where MSA_Id='$row[1]'";
+// $r=mysqli_query($conn,$q);
+// $row1=mysqli_fetch_row($r);
+// $count=0;
+// for($i=2;$i<=19;$i++)
+// {
+//     if(isset($row1[$i]))
+//     {
+//         $count+=1;
+//     }
+// }
+
 ?>
 <div class="content">
     <div class="container-fluid">
@@ -30,11 +43,13 @@ $row=mysqli_fetch_row($result);
                       <thead class="text-primary">
                         <tr>
                            <th>Date</th>
+                           <!-- <th>Number of Questions Answered</th> -->
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                            <td>$row[2]</td>
+                            <td><a href="<?php echo 'FinalResult.php?id='.$row[0].'&pid='.$id;?>"><?php echo $row[2]?></a></td>
+                            <!-- <td><?php //echo $count;?><td> -->
                         </tr>
                       </tbody>
                     </table>

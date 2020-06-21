@@ -22,7 +22,7 @@ if(isset($_POST['btnAdd']))
   $result=mysqli_query($conn,$query);
   if($result)
   {
-    header('location:Patient.php');
+ echo  "<script>alert('done');window.location.href='Patient.php'</script>";
   }
   else
   {
@@ -47,13 +47,13 @@ if(isset($_POST['btnAdd']))
                       <div class="col-md-5">
                         <div class="form-group">
                           <label>Name </label>
-                          <input type="text" class="form-control" name="name">
+                          <input type="text" class="form-control" name="name" required>
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
                           <label>Password</label>
-                          <input type="password" class="form-control" name="password">
+                          <input type="password" class="form-control" name="password" required>
                         </div>
                       </div>
                       <div class="col-md-4">

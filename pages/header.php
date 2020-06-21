@@ -13,8 +13,8 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="material-dashboard.css?v=2.1.2" rel="stylesheet" />
-    <link src="style.css"/>
+    <link href="mainStyle.css?v=2.1.2" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 
 <body class="">
@@ -28,7 +28,7 @@ $first_part=basename($_SERVER['PHP_SELF'], ".php");
     <div class="wrapper ">
         <div class="sidebar" data-color="azure" data-background-color="white">
             <div class="logo"><a href="" class="simple-text logo-normal">
-                    MGrego Site 
+                    MGrego Site
                 </a></div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
@@ -37,28 +37,22 @@ $first_part=basename($_SERVER['PHP_SELF'], ".php");
                 {
                   
                 ?>
-                    <li class="<?php if($first_part=='index') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
-                        <a class="nav-link" href="Symptom.php">
-                            <i class="material-icons">dashboard</i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li class="<?php //if($first_part=='Patient') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
-                        <a class="nav-link" href="Patient.php">
-                            <i class="material-icons">person</i>
-                            <p>Patient</p>
-                        </a>
-                    </li>
-                    <li class="<?php if ($first_part=='Symptom') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                    <li class="<?php if ($first_part=='Symptom'||$first_part=='MaleSymptom'||$first_part=='FemaleSymptom') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
                         <a class="nav-link" href="Symptom.php">
                             <i class="material-icons">person</i>
                             <p>Symptom Assessment</p>
                         </a>
                     </li>
-                    <li class="<?php if ($first_part=='Result') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                    <li class="<?php if ($first_part=='FinalResult'||$first_part=='Result'||$first_part=='Assessment') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
                         <a class="nav-link" href="Result.php">
                             <i class="material-icons">person</i>
                             <p>Assessment Results</p>
+                        </a>
+                    </li>
+                    <li class="<?php if($first_part=='Patient'||$first_part=='AddPatient') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                        <a class="nav-link" href="Patient.php">
+                            <i class="material-icons">person</i>
+                            <p>Patient</p>
                         </a>
                     </li>
                 <?php 
@@ -72,25 +66,14 @@ $first_part=basename($_SERVER['PHP_SELF'], ".php");
                             <p>Profile</p>
                         </a>
                     </li>
-                    <li class="<?php if(($first_part=='Symptom')||($first_part=='FemaleSymptom')) {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
-                    <?php
-                        if($_SESSION['gender']=='Female')
-                        {
-                            ?>
-                            <a class="nav-link" href=<?php echo "FemaleSymptom.php?id=".$_SESSION['Patient'];?>>
-                       <?php 
-                       }else {
-?>
-                     
-                        <a class="nav-link" href=<?php echo "MaleSymptom.php?id=".$_SESSION['Patient'];?>>
-  <?php                  }
-                    ?>
+                    <li class="<?php if(($first_part=='MaleSymptom')||($first_part=='FemaleSymptom')) {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                    <a class="nav-link" href=<?php echo "CheckRequiredInfo.php?id=".$_SESSION['Patient'];?>>
                             <i class="material-icons">person</i>
                             <p>Symptom Assessment</p>
                         </a>
                     </li>
-                    <li class="<?php if($first_part=='Result') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
-                        <a class="nav-link" href=<?php echo "Result.php?id=".$_SESSION['Patient'];?>>
+                    <li class="<?php if($first_part=='FinalResult'||$first_part=='Assessment'||$first_part=='Result') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                        <a class="nav-link" href=<?php echo "Assessment.php?id=".$_SESSION['Patient'];?>>
                             <i class="material-icons">person</i>
                             <p>Assessment Results</p>
                         </a>
