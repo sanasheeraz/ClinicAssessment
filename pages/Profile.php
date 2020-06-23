@@ -14,7 +14,8 @@ $row=mysqli_fetch_row($result);
 
 <div class="content">
     <div class="container-fluid">
-        <table>
+        <div class="table-responsive" style="text-align: center;">
+        <table class="table" >
             <tr>
                 <th>Name</th>
                 <th><?php echo $row[1]?></th>
@@ -32,12 +33,14 @@ $row=mysqli_fetch_row($result);
                 <th><?php echo $row[4]?></th>
             </tr>
             <tr>
-                <th>Contact Np</th>
+                <th>Contact No</th>
                 <th><?php echo $row[5]?></th>
             </tr>
-            <div style="text-align:center"><a class="btn btn-primary" href="<?php echo 'UpdateProfile.php?id='.$id?>">Edit Profile</a></div>           
             
         </table>
+        <div style="text-align:center"><a class="btn btn-primary" href="<?php echo 'UpdateProfile.php?id='.$id?>">Edit Profile</a></div>           
+            
+        </div>
     </div>
 </div>
 

@@ -470,36 +470,40 @@ if (!(isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['i
                         <td>
                             <h4>Danger Levels:</h4></b>
                         </td>
-                        <td></td>
+                        <td><img src="gradient7.png"/></td>
                     </tr>
                     <tr>
                         <td width="130">&nbsp;Diet Balance:</td>
-                        <td width="35"></td>
+                        <td width="35"><b>-9</b></td>
                         <td width="60">&nbsp;Severity:&nbsp;&nbsp;</td>
-                        <td width="140"></td>
-                        <td></td>
+                        <td width="140"><b>Developing Stability,
+Improving</b></td>
+                        <td><img src="gradient.png" /></td>
                     </tr>
                     <tr>
                         <td>&nbsp;Pre&minus;Diabetic&nbsp;Profile:</td>
-                        <td></td>
+                        <td><b>-27</b></td>
                         <td>&nbsp;Severity:&nbsp;&nbsp;</td>
-                        <td></td>
-                        <td>
-                        </td>
+                        <td><b>Threatening,
+Instability</b></td>
+                        <td><img src="gradient.png" /></td>
                     </tr>
                     <tr>
                         <td>&nbsp;Adrenal Profile:</td>
-                        <td></td>
+                        <td><b>-36</b></td>
                         <td>&nbsp;Severity:&nbsp;&nbsp;</td>
-                        <td></td>
-                        <td></td>
+                        <td><b>Threatening,
+Instability</b></td>
+                        <td><img src="gradient.png"/></td>
                     </tr>
                     <tr>
                         <td>&nbsp;Thyroid Profile:</td>
-                        <td></td>
+                        <td><b>-6</b></td>
                         <td>&nbsp;Severity:&nbsp;&nbsp;</td>
-                        <td></td>
-                        <td></td>
+                        <td><b>Threatening,
+Instability</b></td>
+                        <td><img src="gradient.png" /></td>
+                        
                     </tr>
                 </tbody>
             </table>
