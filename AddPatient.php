@@ -22,7 +22,7 @@ if(isset($_POST['btnAdd']))
   $result=mysqli_query($conn,$query);
   if($result)
   {
- echo  "<script>alert('done');window.location.href='Patient.php'</script>";
+ echo  "<script>alert('Inserted');window.location.href='Patient.php'</script>";
   }
   else
   {

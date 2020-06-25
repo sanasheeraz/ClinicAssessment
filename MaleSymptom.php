@@ -6,7 +6,7 @@ include 'connection.php';
 if((isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['id']))
 {
 $id=$_GET['id'];
-$query="Select * from Patient where P_Id ='$id'";
+$query="Select * from patient where P_Id ='$id'";
 $result=mysqli_query($conn,$query);
 $row=mysqli_fetch_row($result);
 }?>

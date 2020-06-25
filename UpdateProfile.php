@@ -25,7 +25,7 @@ if(isset($_POST['btnUpdate']))
   $contact=$_POST['contact'];
   $dob=$_POST['dob'];
 
-  $query1="Update Patient set P_Name='$name', P_BirthDate='$dob', P_Gender='$gender', P_Email='$email', P_Password='$password', P_Contact='$contact', P_Address='$address' where P_Id='$id'";
+  $query1="Update patient set P_Name='$name', P_BirthDate='$dob', P_Gender='$gender', P_Email='$email', P_Password='$password', P_Contact='$contact', P_Address='$address' where P_Id='$id'";
 
   $result1=mysqli_query($conn,$query1);
   if($result1)
@@ -51,7 +51,7 @@ if(isset($_POST['btnUpdate']))
     echo "<script>alert('Error ')</script>";
   }
 }
-$query="Select * from Patient where P_Id='$id'";
+$query="Select * from patient where P_Id='$id'";
 $result=mysqli_query($conn,$query);
 $row=mysqli_fetch_row($result);
 

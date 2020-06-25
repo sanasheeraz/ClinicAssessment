@@ -7,7 +7,7 @@ if(!isset($_SESSION['Patient']))
 include 'header.php';
 include 'connection.php';
 $id=$_GET['id'];
-$query="Select * from Patient where P_Id = '$id'";
+$query="Select * from patient where P_Id = '$id'";
 $result=mysqli_query($conn,$query);
 $row=mysqli_fetch_row($result);
 ?>

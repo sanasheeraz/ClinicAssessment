@@ -6,8 +6,9 @@ if(!isset($_SESSION['admin']))
 }else{
 include 'header.php';
 include 'connection.php';
-$id=$_GET['id'];
-$query="Select * from Admin where A_Id = '$id'";
+//$id=$_GET['id'];
+$id=$_SESSION['admin_id'];
+$query="Select * from admin where A_Id = '$id'";
 $result=mysqli_query($conn,$query);
 $row=mysqli_fetch_row($result);
 

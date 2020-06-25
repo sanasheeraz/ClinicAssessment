@@ -6,6 +6,7 @@ if(!((isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['i
 }
 else{
     $id=$_GET['id'];
+    //$id=$_SESSION['Patient'];
     include 'connection.php';
     $query="select * from patient where P_Id='$id'";
     $result=mysqli_query($conn,$query);
