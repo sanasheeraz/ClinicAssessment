@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        MGREGO Symptom Assessment
+        InsulThin Symptom Assessment
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -15,6 +15,12 @@
     <!-- CSS Files -->
     <link href="mainStyle.css?v=2.1.2" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="style.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css"/>
+    
 </head>
 
 <body class="">
@@ -29,7 +35,7 @@ $first_part=basename($_SERVER['PHP_SELF'], ".php");
         <div class="sidebar" data-color="azure" data-background-color="white">
             <div class="logo">
             <a href="" class="simple-text logo-normal">
-                    MGREGO Symptom<br> Assessment 
+            InsulThin Symptom<br> Assessment 
                 </a></div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
@@ -121,7 +127,7 @@ $first_part=basename($_SERVER['PHP_SELF'], ".php");
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  MGREGO<i class="material-icons">person</i>
+                InsulThin<i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
                     Account
                   </p>

@@ -9,6 +9,15 @@ include 'connection.php';
 $query="select * from patient AS p JOIN m_symptom_assessment AS s ON (p.P_Id = s.P_Id) group by p.P_Id";
 $result=mysqli_query($conn,$query);
 ?>
+
+<script>
+$(document).ready(function() {
+var table =  $('#example').DataTable({
+  "ordering":false
+});
+$( table.table().container() ).removeClass( 'form-inline' );
+});
+</script>
 <div class="content">
     <div class="container-fluid">
         <div style="text-align:center">
@@ -32,7 +41,7 @@ $result=mysqli_query($conn,$query);
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="example">
                       <thead class=" text-primary">
                         <th>
                           Select

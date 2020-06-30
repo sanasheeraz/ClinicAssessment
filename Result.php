@@ -15,6 +15,15 @@ $query="SELECT * FROM patient AS p JOIN m_symptom_assessment AS s ON (p.P_Id = s
 $result=mysqli_query($conn,$query);
 
 ?>
+
+<script>
+$(document).ready(function() {
+var table =  $('#example').DataTable({
+  "ordering":false
+});
+$( table.table().container() ).removeClass( 'form-inline' );
+});
+</script>
 <div class="content">
     <div class="container-fluid">
 
@@ -31,7 +40,7 @@ $result=mysqli_query($conn,$query);
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="example">
                       <thead class=" text-primary">
                         <th>
                           Select

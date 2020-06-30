@@ -9,6 +9,14 @@ include 'connection.php';
 $query="select * from patient";
 $result=mysqli_query($conn,$query);
 ?>
+ <script>
+$(document).ready(function() {
+var table =  $('#example').DataTable({
+  "ordering":false
+});
+$( table.table().container() ).removeClass( 'form-inline' );
+});
+</script>
 <div class="content">
         <div class="container-fluid">
           <div class="row">
@@ -27,32 +35,16 @@ $result=mysqli_query($conn,$query);
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table">
-                      <thead class=" text-primary">
-                        <th>
-                          ID
-                        </th>
-                        <th>
-                          Name
-                        </th>
-                        <th>
-                          Email
-                        </th>
-                        <th>
-                          Gender
-                        </th>
-                        <th>
-                          Date of Birth
-                        </th>
-                        <th>
-                          Contact No
-                        </th>
-                        <th>
-                          Address
-                        </th>
-                        <th>
-                          Action
-                        </th>
+                    <table class="table" id="example" >
+                      <thead class="text-primary">
+                        <th>ID</th>
+                        <th> Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Date of Birth</th>
+                        <th>Contact No</th>
+                        <th>Address</th>
+                        <th>Action</th>
                       </thead>
                       <tbody>
                         <?php
