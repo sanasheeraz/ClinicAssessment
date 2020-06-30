@@ -6,7 +6,7 @@ if(!isset($_SESSION['admin']))
 }else{
 include 'header.php';
 include 'connection.php';
-$query="select * from patient";
+$query="select * from patient AS p JOIN m_symptom_assessment AS s ON (p.P_Id = s.P_Id) group by p.P_Id";
 $result=mysqli_query($conn,$query);
 ?>
 <div class="content">
@@ -63,7 +63,8 @@ $result=mysqli_query($conn,$query);
                           ?>
                           
                           <tr>
-                          <td><a href="<?php echo 'CheckRequiredInfo.php?id='.$row['P_Id'];?>">Select</a></td>
+                          <!-- <td><a href="<?php //echo 'CheckRequiredInfo.php?id='.$row['P_Id'];?>">Select</a></td> -->
+                          <td><a href="<?php echo 'Assessment1.php?id='.$row['P_Id'];?>">Select</a></td>
                           <td><?php echo $row['P_Name'];?></td>
                           <td><?php echo $row['P_Email'];?></td>
                           <td><?php echo $row['P_Gender'];?></td>

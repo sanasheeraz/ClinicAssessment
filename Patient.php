@@ -67,7 +67,8 @@ $result=mysqli_query($conn,$query);
                           <td><?php echo $row['P_BirthDate'];?></td>
                           <td><?php echo $row['P_Contact'];?></td>
                           <td><?php echo $row['P_Address'];?></td>
-                          <td><a href="<?php echo 'UpdateProfile.php?id='.$row['P_Id'];?>">Edit</a></td>
+                          <td><a href="<?php echo 'UpdateProfile.php?id='.$row['P_Id'];?>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo 'DeletePatient.php?id='.$row['P_Id'];?>">Delete</a></td>
+                          
                           </tr>
                           <?php
                         }

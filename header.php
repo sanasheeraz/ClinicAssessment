@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        MGrego Site
+        MGREGO Symptom Assessment
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -27,8 +27,9 @@ $first_part=basename($_SERVER['PHP_SELF'], ".php");
 ?>
     <div class="wrapper ">
         <div class="sidebar" data-color="azure" data-background-color="white">
-            <div class="logo"><a href="" class="simple-text logo-normal">
-                    MGrego Site
+            <div class="logo">
+            <a href="" class="simple-text logo-normal">
+                    MGREGO Symptom<br> Assessment 
                 </a></div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
@@ -43,22 +44,28 @@ $first_part=basename($_SERVER['PHP_SELF'], ".php");
                             <p>Symptom Assessment</p>
                         </a>
                     </li>
-                    <li class="<?php if ($first_part=='FinalResult'||$first_part=='Result'||$first_part=='Assessment') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                    <li class="<?php if ($first_part=='FinalResult'||$first_part=='Result'||$first_part=='Assessment'||$first_part=='MaleSymptomDisplay'||$first_part=='FemaleSymptomDisplay') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
                         <a class="nav-link" href="Result.php">
                             <i class="material-icons">person</i>
                             <p>Assessment Results</p>
                         </a>
                     </li>
-                    <li class="<?php if($first_part=='Patient'||$first_part=='AddPatient') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                    <li class="<?php if($first_part=='Patient'||$first_part=='AddPatient'||$first_part=='UpdateProfile') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
                         <a class="nav-link" href="Patient.php">
                             <i class="material-icons">person</i>
                             <p>Patient</p>
                         </a>
                     </li>
-                    <li class="<?php if($first_part=='Product'||$first_part=='UpdateProduct') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
-                        <a class="nav-link" href="Patient.php">
+                    <li class="<?php if($first_part=='Profile') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                        <a class="nav-link" href=<?php echo "AdminProfile.php?id=".$_SESSION['admin_id'];?>>
                             <i class="material-icons">person</i>
-                            <p>Product</p>
+                            <p>Profile</p>
+                        </a>
+                    </li>
+                    <li class="<?php if($first_part=='logout') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                        <a class="nav-link" href=<?php echo "logout.php"?>>
+                            <i class="material-icons">person</i>
+                            <p>Log Out</p>
                         </a>
                     </li>
                 <?php 
@@ -78,10 +85,17 @@ $first_part=basename($_SERVER['PHP_SELF'], ".php");
                             <p>Symptom Assessment</p>
                         </a>
                     </li>
-                    <li class="<?php if($first_part=='FinalResult'||$first_part=='Assessment'||$first_part=='Result') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                    <li class="<?php if($first_part=='FinalResult'||$first_part=='Assessment'||$first_part=='Result'||$first_part=='MaleSymptomDisplay'||$first_part=='FemaleSymptomDisplay') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
                         <a class="nav-link" href=<?php echo "Assessment.php?id=".$_SESSION['Patient'];?>>
                             <i class="material-icons">person</i>
                             <p>Assessment Results</p>
+                        </a>
+                    </li>
+                    
+                    <li class="<?php if($first_part=='logout') {echo 'nav-item active'; } else  {echo 'nav-item noactive';}?>">
+                        <a class="nav-link" href=<?php echo "logout.php"?>>
+                            <i class="material-icons">person</i>
+                            <p>Log Out</p>
                         </a>
                     </li>
                 <?php 
@@ -94,9 +108,9 @@ $first_part=basename($_SERVER['PHP_SELF'], ".php");
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">MGrego</a>
-          </div>
+          <!-- <div class="navbar-wrapper">
+            <a class="navbar-brand" href="javascript:;">MGREGO</a>
+          </div> -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
@@ -107,7 +121,7 @@ $first_part=basename($_SERVER['PHP_SELF'], ".php");
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">person</i>
+                  MGREGO<i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
                     Account
                   </p>

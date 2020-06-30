@@ -386,6 +386,19 @@ if (!(isset($_SESSION['admin'])OR isset($_SESSION['Patient']))AND isset($_GET['i
 ?>
     <div class="content">
         <div class="container-fluid">
+        <div style="text-align:center">
+        <?php
+        if ($row[3] == "Male") {
+        ?>
+            <a  class="btn btn-primary" href="<?php echo 'MaleSymptomDisplay.php?id=' . $id . '&pid=' . $pid; ?>">Show Answers</a>
+        <?php
+        }else{
+        ?>   
+            <a  class="btn btn-primary" href="<?php echo 'FemaleSymptomDisplay.php?id='. $id . '&pid=' . $pid; ?>">Show Answers</a>
+        <?php
+        }
+        ?>
+        </div>
             <div style="text-align: center;">
                 <h2>Assessment Results</h2>
             </div>

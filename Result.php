@@ -25,7 +25,7 @@ $result=mysqli_query($conn,$query);
                   <div class="row">
                     <div class="col-lg-10">
                     <h4 class="card-title ">Symptom Assessment Patients</h4>
-                    <p class="card-category"> Details of patients</p>
+                    <p class="card-category"> Assessment Results</p>
                     </div>
                   </div>
                 </div>
